@@ -95,4 +95,4 @@ Crear una tabla llamada `Leads_Propuestas` con las siguientes columnas exactas:
 
 ## 🔗 Enlaces del Proyecto
 
-* **Base de Airtable (Modo Lectura):** `https://airtable.com/appXQtUw8TQemu5dK/tbl6lp6CGY0WMLxre/viwaw4n6EXhQZgu4u`
+* **Base de Airtable (Modo Lectura):** `https://airtable.com/appXQtUw8TQemu5dK/shrqaGe2sEbG98iyr`
