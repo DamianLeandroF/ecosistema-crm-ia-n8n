@@ -60,7 +60,8 @@
           "value": {
             "id": "={{ $('Trigger Airtable - Leads Pendientes').item.json.id }}",
             "Estado": "Esperando Aprobación",
-            "Propuesta_Generada": "={{ $json.content.parts[0].text }}"
+            "Propuesta_Generada": "={{ JSON.parse($json.content.parts[0].text).propuesta }}",
+            "Score_IA": "={{ JSON.parse($json.content.parts[0].text).score }}"
           },
           "matchingColumns": [
             "id"
@@ -245,7 +246,7 @@
         "messages": {
           "values": [
             {
-              "content": "=Eres un director comercial experto en tecnología y automatización. Analiza el siguiente requerimiento de un lead:\n\n- Cliente: {{$json.Nombre_Cliente}}\n- Empresa: {{$json.Empresa}}\n- Descripción del Proyecto: {{$json.Descripcion_Proyecto}}\n\n1. Asigna un Score del 1 al 100 basado en su viabilidad y potencial.\n2. Redacta una propuesta comercial corta y profesional.\n\nDevuelve la respuesta estructurada claramente."
+              "content": "=={{\n`Actúa como un Director Comercial experto. Analiza el siguiente lead:\n- Cliente: ${$('Trigger Airtable - Leads Pendientes').first().json.fields.Nombre_Cliente}\n- Empresa: ${$('Trigger Airtable - Leads Pendientes').first().json.fields.Empresa}\n- Descripción: ${$('Trigger Airtable - Leads Pendientes').first().json.fields.Descripcion_Proyecto}\n\nDevuelve ÚNICAMENTE un objeto JSON válido sin bloques markdown ni texto adicional:\n{\"score\": 85, \"propuesta\": \"texto de la propuesta\"}`\n}}"
             }
           ]
         },
@@ -695,7 +696,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "368820fe-62bd-40ad-9214-c73317172318",
+  "versionId": "a2f30c11-8677-4dae-a3f8-6020f8b8fff1",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e747d52990b2d5ffc43428a8f141b2eea7a2d7fea5fb48311adb741968776de6"
